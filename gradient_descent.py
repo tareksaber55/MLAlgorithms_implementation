@@ -1,8 +1,6 @@
-import matplotlib.pyplot as plt
 import numpy as np
 from numpy.linalg import norm
 import pandas as pd
-import seaborn as sns
 
 def gradient_descent_linear_regression(X, t,initial_values, step_size = 0.01, precision = 0.0001, max_iter = 1000,alpha = 0.1): 
     def f_derivative(x, t, weights):
@@ -34,4 +32,5 @@ def costfun(x,t,weights):
     error = predictions - t
     cost = np.sum(error ** 2) / (2 * x.shape[0])
     return cost
+
     
