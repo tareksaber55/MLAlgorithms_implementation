@@ -2,6 +2,7 @@ import numpy as np
 from numpy.linalg import norm
 import pandas as pd
 
+# represent The Analytical closed Formula of Ridge Model 
 class NormalEquations():
     def __init__(self,alpha,fit_intercept = True):
            self.alpha = alpha
@@ -24,4 +25,5 @@ class NormalEquations():
              x_test = np.hstack((np.ones((x_test.shape[0],1)),x_test))
         results = x_test @ self.weights
         return results
+
 
