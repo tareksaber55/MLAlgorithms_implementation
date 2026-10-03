@@ -17,9 +17,9 @@ def compute_iou(box, boxes):
 
 def nms(boxes, scores, iou_thresh = 0.5):
     keep = []
-    indices = scores.argsort(descending=True)
+    indices = scores.argsort()[::-1]
 
-    while indices:
+    while len(indices):
         # Take the top-scoring box (the "current" box).
         current = indices[0]
         keep.append(current)
@@ -75,8 +75,9 @@ if __name__ == '__main__':
                       [150, 150, 250, 250]])
     scores = np.array([0.9, 0.8, 0.7])
 
+    keep1 = nms(boxes,scores)
     keep, final_boxes, final_scores = soft_nms(boxes, scores, method='gaussian')
-
+    print("Final kept indices of hard nms:", keep1)
     print("Final kept indices:", keep)
     print("Final boxes:\n", final_boxes)
     print("Final scores:\n", final_scores)
